@@ -13,12 +13,9 @@ public class AuthorizationPage {
         return authentificationMessage;
     }
 
-    public AuthorizationPage inputOnURLUserPasswordCredentials(String user, String password)  {
-        Selenide.open(new StringBuilder().append("http://")
-                .append(user).append(":")
-                .append(password)
-                .append("@the-internet.herokuapp.com/basic_auth")
-                .toString());
-      return this;
+    public AuthorizationPage inputOnURLUserPasswordCredentials(String user, String password) {
+        String credentialsUrl = "http://" + user + ":" + password + "@the-internet.herokuapp.com/basic_auth";
+        Selenide.open(credentialsUrl);
+        return this;
     }
 }

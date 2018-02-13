@@ -13,7 +13,6 @@ public abstract class BaseTest {
         ChromeDriverManager.getInstance().setup();
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
-        Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = dev;
     }
 
