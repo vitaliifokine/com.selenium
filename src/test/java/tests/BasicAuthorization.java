@@ -5,7 +5,7 @@ import domainUser.User;
 import org.testng.annotations.Test;
 import pages.AuthorizationPage;
 
-public class BasicAuthorization extends BaseTest {
+public class BasicAuthorization extends BaseTests {
 
     @Test
     public void testValidCredentialsUrLFlow() {
