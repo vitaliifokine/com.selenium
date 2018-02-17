@@ -1,8 +1,13 @@
+plugins {
+    id 'ru.d10xa.allure' version '0.5.5'
+}
+
 group 'selenium.com'
 version '1.0'
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'ru.d10xa.allure'
 
 repositories {
     jcenter()
@@ -14,8 +19,24 @@ dependencies {
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
     annotationProcessor "org.projectlombok:lombok:1.16.16"
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '1.6.2'
+    compile group: 'ru.yandex.qatools.allure', name: 'allure-maven-plugin', version: '2.6'
+    testCompile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '1.6.2'
+    classpath "io.qameta.allure:allure-gradle:<latest>"
+    testCompile 'org.assertj:assertj-core:3.6.2'
 }
 
 test {
-    useTestNG{}
+    useTestNG()
+    outputs.upToDateWhen { false }
+    testLogging {
+        showStandardStreams = true
+        events "started", "passed", "skipped", "failed"
+        exceptionFormat = 'full'
+    }
+}
+
+allure {
+    aspectjweaver = true
+    testNG = true
+    allureVersion = "2.6"
 }
